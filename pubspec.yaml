@@ -1,0 +1,7 @@
+name:  extensions
+version: 0.1.0
+author: Ali Afshar <afshar@google.com>
+description:  Library to extend an application with plugins.
+
+dependencies:
+  unittest: any
