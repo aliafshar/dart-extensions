@@ -1,0 +1,1 @@
+[{"name":"extensions","types":[{"name":"Extensible","kind":"class","members":[{"kind":"method","name":"extend"},{"kind":"constructor","name":"Extensible"},{"kind":"getter","noparams":true,"name":"pluggable"},{"kind":"method","noparams":true,"name":"start"},{"kind":"field","name":"waitingFor"}]},{"name":"Extension","kind":"typedef"}]}]
