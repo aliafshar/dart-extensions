@@ -5,7 +5,8 @@ DARTDOC = /usr/local/dart/dart-sdk/bin/dartdoc
 
 builddoc:
 	${DARTDOC} lib/extensions.dart
-	git commit -a -m "Generated docs."
+	git add docs
+	git commit -m "Generated docs."
 	git push origin master
 
 pushdoc: builddoc
