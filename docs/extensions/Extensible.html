@@ -1,0 +1,169 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>Extensible class / extensions Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="extensions" data-type="Extensible">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../extensions.html">extensions</a> &rsaquo; <a href="../extensions/Extensible.html">Extensible</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>Extensible</strong>
+          class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<p>An extension loader that collects extensions and waits on their loading.</p>
+<p>You can inherit this if you want, but I'd rather compose it.</p>
+<pre class="source">
+class Extensible {
+
+ /**
+  * The instance being extended, will be passed to all extensions.
+  */
+ final dynamic _pluggable;
+
+ /**
+  * The list of futures that this loader will wait on.
+  */
+ final List&lt;Future&gt; waitingFor = &lt;Future&gt;[];
+
+ /**
+  * Create a new extension loader for the given pluggable.
+  */
+ Extensible([this._pluggable]);
+
+ /**
+  * The argument passed during plugin setup.
+  *
+  * Either passed on instantiation, or will be this,
+  */
+ dynamic get pluggable =&gt; _pluggable != null ? _pluggable : this;
+
+ /**
+  * Load an extension.
+  */
+ dynamic extend(Extension plugin) {
+   var result = plugin(pluggable);
+   if (result is Future) {
+     waitingFor.add(result);
+   }
+   return result;
+ }
+
+ /**
+  * Wait for all the extensions to load.
+  */
+ Future start() {
+   return Futures.wait(waitingFor);
+ }
+
+}
+</pre>
+</div>
+<div>
+<h3>Constructors</h3>
+<div class="method"><h4 id="Extensible">
+<button class="show-code">Code</button>
+new <strong>Extensible</strong>([_pluggable]) <a class="anchor-link" href="#Extensible"
+              title="Permalink to Extensible.Extensible">#</a></h4>
+<div class="doc">
+<p>Create a new extension loader for the given pluggable.</p>
+<pre class="source">
+Extensible([this._pluggable]);
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="pluggable">
+<button class="show-code">Code</button>
+final         <strong>pluggable</strong> <a class="anchor-link"
+            href="#pluggable"
+            title="Permalink to Extensible.pluggable">#</a>
+        </h4>
+        <div class="doc">
+<p>The argument passed during plugin setup.</p>
+<p>Either passed on instantiation, or will be this,</p>
+<pre class="source">
+dynamic get pluggable =&gt; _pluggable != null ? _pluggable : this;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="waitingFor">
+<button class="show-code">Code</button>
+final List&lt;Future&gt;         <strong>waitingFor</strong> <a class="anchor-link"
+            href="#waitingFor"
+            title="Permalink to Extensible.waitingFor">#</a>
+        </h4>
+        <div class="doc">
+<p>The list of futures that this loader will wait on.</p>
+<pre class="source">
+final List&lt;Future&gt; waitingFor = &lt;Future&gt;[];
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Methods</h3>
+<div class="method"><h4 id="extend">
+<button class="show-code">Code</button>
+<strong>extend</strong>(<a href="../extensions/Extension.html">Extension</a> plugin) <a class="anchor-link" href="#extend"
+              title="Permalink to Extensible.extend">#</a></h4>
+<div class="doc">
+<p>Load an extension.</p>
+<pre class="source">
+dynamic extend(Extension plugin) {
+ var result = plugin(pluggable);
+ if (result is Future) {
+   waitingFor.add(result);
+ }
+ return result;
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="start">
+<button class="show-code">Code</button>
+Future <strong>start</strong>() <a class="anchor-link" href="#start"
+              title="Permalink to Extensible.start">#</a></h4>
+<div class="doc">
+<p>Wait for all the extensions to load.</p>
+<pre class="source">
+Future start() {
+ return Futures.wait(waitingFor);
+}
+</pre>
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        
+        <div class="footer">
+          <div>This page was generated at 2013-01-03 09:15:01.811</div>
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

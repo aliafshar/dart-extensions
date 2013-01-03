@@ -1,0 +1,147 @@
+
+[
+  {
+    "kind": "library",
+    "name": "extensions",
+    "children": [
+      {
+        "superclass": {
+          "name": "Object",
+          "refId": "Object"
+        },
+        "kind": "class",
+        "comment": "\nAn extension loader that collects extensions and waits on their loading.\n\nYou can inherit this if you want, but I'd rather compose it.\n\n",
+        "name": "Extensible",
+        "children": [
+          {
+            "returnType": {
+              "name": "dynamic",
+              "refId": "dynamic"
+            },
+            "kind": "method",
+            "comment": "\nCreate a new extension loader for the given pluggable.\n\n",
+            "name": "Extensible",
+            "children": [
+              {
+                "ref": {
+                  "name": "dynamic",
+                  "refId": "dynamic"
+                },
+                "isOptional": true,
+                "kind": "param",
+                "name": "_pluggable",
+                "id": "_pluggable"
+              }
+            ],
+            "id": "Extensible1()"
+          },
+          {
+            "returnType": {
+              "name": "dynamic",
+              "refId": "dynamic"
+            },
+            "kind": "method",
+            "comment": "\nThe argument passed during plugin setup.\n\nEither passed on instantiation, or will be this,\n\n",
+            "name": "pluggable",
+            "id": "pluggable0()"
+          },
+          {
+            "returnType": {
+              "name": "dynamic",
+              "refId": "dynamic"
+            },
+            "kind": "method",
+            "comment": "\nLoad an extension.\n\n",
+            "name": "extend",
+            "children": [
+              {
+                "ref": {
+                  "name": "Extension",
+                  "refId": "Extension"
+                },
+                "kind": "param",
+                "name": "plugin",
+                "id": "plugin"
+              }
+            ],
+            "id": "extend1()"
+          },
+          {
+            "returnType": {
+              "name": "Future",
+              "refId": "Future"
+            },
+            "kind": "method",
+            "comment": "\nWait for all the extensions to load.\n\n",
+            "name": "start",
+            "id": "start0()"
+          },
+          {
+            "ref": {
+              "name": "dynamic",
+              "refId": "dynamic"
+            },
+            "kind": "property",
+            "comment": "\nThe argument passed during plugin setup.\n\nEither passed on instantiation, or will be this,\n\n",
+            "name": "pluggable",
+            "id": "pluggable"
+          },
+          {
+            "ref": {
+              "name": "dynamic",
+              "refId": "dynamic"
+            },
+            "kind": "property",
+            "name": "_pluggable",
+            "id": "_pluggable"
+          },
+          {
+            "ref": {
+              "name": "List",
+              "refId": "List",
+              "arguments": [
+                {
+                  "name": "Future",
+                  "refId": "Future"
+                }
+              ]
+            },
+            "kind": "property",
+            "name": "waitingFor",
+            "id": "waitingFor"
+          },
+          {
+            "returnType": {
+              "name": "dynamic",
+              "refId": "dynamic"
+            },
+            "kind": "constructor",
+            "comment": "\nCreate a new extension loader for the given pluggable.\n\n",
+            "name": "Extensible",
+            "children": [
+              {
+                "ref": {
+                  "name": "dynamic",
+                  "refId": "dynamic"
+                },
+                "isOptional": true,
+                "kind": "param",
+                "name": "_pluggable",
+                "id": "_pluggable"
+              }
+            ],
+            "id": "Extensible1()"
+          }
+        ],
+        "id": "Extensible"
+      },
+      {
+        "kind": "typedef",
+        "comment": "\nThe function type of a plugin.\n\n",
+        "name": "Extension",
+        "id": "Extension"
+      }
+    ],
+    "id": "file:///usr/local/google/home/afshar/src/arzio/google3/dart-extensions/lib/extensions.dart"
+  }
+]
