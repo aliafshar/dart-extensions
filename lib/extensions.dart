@@ -1,23 +1,53 @@
+// Copyright 2012, Google Inc
+// Author: Ali Afshar
+
 
 library extensions;
 
-typedef Future Plugin(dynamic plugable);
+/**
+ * The function type of a plugin.
+ */
+typedef Future Extension(dynamic pluggable);
 
-class Extensions {
 
-  final dynamic plugable;
-  final List<Future> futures = <Future>[];
+/**
+ * An extension loader that collects extensions and waits on their loading.
+ *
+ * You can inherit this if you want, but I'd rather compose it.
+ */
+class Extensible {
 
-  Extensions(this.plugable);
+  /**
+   * The instance being extended, will be passed to all extensions.
+   */
+  final dynamic pluggable;
 
-  Future extend(Plugin plugin) {
-    Future f = plugin(plugable);
-    if (f != null) futures.add(f);
+  /**
+   * The list of futures that this loader will wait on.
+   */
+  final List<Future> waitingFor = <Future>[];
+
+  /**
+   * Create a new extension loader for the given pluggable.
+   */
+  Extensible([this.pluggable]);
+
+  /**
+   * Load an extension.
+   */
+  Future extend(Extension plugin) {
+    Future f = plugin(pluggable != null ? pluggable : this);
+    if (f != null) {
+      waitingFor.add(f);
+    }
     return f;
   }
 
+  /**
+   * Wait for all the extensions to load.
+   */
   Future start() {
-    return Futures.wait(futures);
+    return Futures.wait(waitingFor);
   }
 
 }
