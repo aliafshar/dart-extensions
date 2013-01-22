@@ -4,6 +4,8 @@
 
 library extensions;
 
+import 'dart:async';
+
 /**
  * The function type of a plugin.
  */
@@ -54,7 +56,7 @@ class Extensible {
    * Wait for all the extensions to load.
    */
   Future start() {
-    return Futures.wait(waitingFor);
+    return Future.wait(waitingFor);
   }
 
 }

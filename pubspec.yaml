@@ -1,5 +1,5 @@
 name:  extensions
-version: 0.1.0
+version: 0.2.0
 author: Ali Afshar <afshar@google.com>
 description:  Plugins for Dart applications.
 homepage: https://github.com/aliafshar/dart-extensions
